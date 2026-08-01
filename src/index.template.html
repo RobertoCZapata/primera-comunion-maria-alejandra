@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FBF7F1">
+  <title>Primera Comunión · María Alejandra</title>
+
+  <!-- ====== OG: asi se ve el link en WhatsApp (sube preview.jpg a la raiz) ====== -->
+  <meta property="og:title" content="Mi Primera Comunión · María Alejandra">
+  <meta property="og:description" content="Sábado 5 de septiembre de 2026 · 10:00 a.m. · Con alegría recibiré por primera vez a Jesús">
+  <!-- og:image DEBE ser URL absoluta: WhatsApp y Facebook no resuelven rutas
+       relativas y el link se compartiria sin imagen de vista previa. -->
+  <meta property="og:image" content="https://primera-comunion-maria-alejandra.vercel.app/assets/preview.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1350">
+  <meta property="og:url" content="https://primera-comunion-maria-alejandra.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ====== Tipografias (mismas de la invitación) ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+
+<!-- ====== Iconos de linea (heredan el color del boton via currentColor) ======
+     Van en SVG y no en emoji: los emoji cambian de dibujo en cada sistema
+     (iOS / Android / Windows) y su color no combina con la paleta. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 21.2s6.8-6.1 6.8-11.2a6.8 6.8 0 1 0-13.6 0c0 5.1 6.8 11.2 6.8 11.2Z"/>
+    <circle cx="12" cy="9.8" r="2.5"/>
+  </symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24">
+    <path d="M20.8 3.2 3.6 10.4a.5.5 0 0 0 .05.94l6.6 2.05 2.05 6.6a.5.5 0 0 0 .94.05L20.8 3.2Z"/>
+  </symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24">
+    <path d="M20.4 11.4a8.2 8.2 0 0 1-12 7.3l-4.8 1.5 1.5-4.5a8.2 8.2 0 1 1 15.3-4.3Z"/>
+    <path d="M8.9 10.2c.3 2.1 2 3.8 4.1 4.1"/>
+  </symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24">
+    <rect x="3.4" y="5.2" width="17.2" height="15.4" rx="2.6"/>
+    <path d="M3.4 10h17.2M8.4 3v4.2M15.6 3v4.2"/>
+    <circle cx="8.9" cy="14" r="1.05" fill="currentColor" stroke="none"/>
+    <circle cx="12.5" cy="14" r="1.05" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <rect x="2.6" y="5" width="18.8" height="14" rx="2.6"/>
+    <path d="m3.4 7.2 8.6 6 8.6-6"/>
+  </symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6"/></symbol>
+</svg>
+<main>
+
+  <!-- ============ 1. LA INVITACIÓN (SVG inline, se inyecta abajo) ============ -->
+  <div class="hero-wrap">
+  <div class="hero" id="hero"><!--HERO_SVG-->
+
+
+
+
+
+</div>
+  <div class="scroll-hint"><span><svg class="ico ico-chev"><use href="#i-chev"/></svg></span>&nbsp; desliza para confirmar &nbsp;<span><svg class="ico ico-chev"><use href="#i-chev"/></svg></span></div>
+  </div>
+
+  <!-- ============ 2. CUENTA REGRESIVA ============ -->
+  <section class="fade">
+    <h2>Faltan</h2>
+    <div class="divisor"><i></i></div>
+    <div class="count" id="count">
+      <div><b id="cd">–</b><small>días</small></div>
+      <div><b id="ch">–</b><small>horas</small></div>
+      <div><b id="cm">–</b><small>min</small></div>
+      <div><b id="cs">–</b><small>seg</small></div>
+    </div>
+    <div class="centro mt">
+      <a class="btn btn-linea" id="btn-cal" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-cal"/></svg> Agregar al calendario</a>
+    </div>
+  </section>
+
+  <!-- ============ 3. UBICACIONES ============ -->
+  <section class="fade">
+    <h2>Ubicaciones</h2>
+    <p class="h2-sub">Toca un botón y tu mapa te llevará</p>
+
+    <div class="card">
+      <div class="etiqueta">CEREMONIA · 10:00 A.M.</div>
+      <div class="lugar">Sagrado Corazón de Jesús</div>
+      <div class="hora">Sábado 5 de septiembre de 2026</div>
+      <div class="botones">
+        <!-- TODO Robert: verifica que el query apunte a la parroquia correcta (ciudad/dirección) -->
+        <a class="btn btn-oro" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Parroquia+Sagrado+Coraz%C3%B3n+de+Jes%C3%BAs+Bucaramanga"><svg class="ico"><use href="#i-pin"/></svg> Google Maps</a>
+        <a class="btn btn-verde" target="_blank" rel="noopener"
+           href="https://waze.com/ul?q=Parroquia%20Sagrado%20Coraz%C3%B3n%20de%20Jes%C3%BAs%20Bucaramanga&navigate=yes"><svg class="ico"><use href="#i-nav"/></svg> Waze</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="etiqueta">RECEPCIÓN · AL FINALIZAR</div>
+      <div class="lugar">Hacienda Casa Antonio</div>
+      <div class="hora">Celebremos juntos este día</div>
+      <div class="botones">
+        <!-- TODO Robert: idem, confirma ciudad/dirección exacta -->
+        <a class="btn btn-oro" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Hacienda+Casa+Antonio+Bucaramanga"><svg class="ico"><use href="#i-pin"/></svg> Google Maps</a>
+        <a class="btn btn-verde" target="_blank" rel="noopener"
+           href="https://waze.com/ul?q=Hacienda%20Casa%20Antonio%20Bucaramanga&navigate=yes"><svg class="ico"><use href="#i-nav"/></svg> Waze</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. CONFIRMACIÓN ============ -->
+  <section class="fade">
+    <h2>Confirma tu asistencia</h2>
+    <div class="divisor"><i></i></div>
+    <p class="nota">Tu compañía hará de este día un recuerdo inolvidable.</p>
+    <div class="centro mt">
+      <a class="btn btn-oro" target="_blank" rel="noopener"
+         href="https://wa.me/573143143863?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20Primera%20Comuni%C3%B3n%20de%20Mar%C3%ADa%20Alejandra%20%F0%9F%95%8A%EF%B8%8F%20Asistiremos%3A%20">
+        <svg class="ico"><use href="#i-chat"/></svg> Confirmar por WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- ============ 5. DETALLE ============ -->
+  <section class="fade">
+    <h2>Un detalle</h2>
+    <div class="divisor"><i></i></div>
+    <p class="nota">Si deseas darme un detalle,<br>agradezco lluvia de sobres&nbsp;<svg class="ico ico-texto"><use href="#i-mail"/></svg></p>
+  </section>
+
+  <footer class="fade">
+    Con amor,
+    <div class="firma">María Alejandra</div>
+  </footer>
+</main>
+
+<script src="./src/app.js"></script>
+</body>
+</html>

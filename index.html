@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FBF7F1">
+  <title>Primera Comunión · María Alejandra</title>
+
+  <!-- ====== OG: asi se ve el link en WhatsApp (sube preview.jpg a la raiz) ====== -->
+  <meta property="og:title" content="Mi Primera Comunión · María Alejandra">
+  <meta property="og:description" content="Sábado 5 de septiembre de 2026 · 10:00 a.m. · Con alegría recibiré por primera vez a Jesús">
+  <!-- og:image DEBE ser URL absoluta: WhatsApp y Facebook no resuelven rutas
+       relativas y el link se compartiria sin imagen de vista previa. -->
+  <meta property="og:image" content="https://primera-comunion-maria-alejandra.vercel.app/assets/preview.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1350">
+  <meta property="og:url" content="https://primera-comunion-maria-alejandra.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ====== Tipografias (mismas de la invitación) ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+
+<!-- ====== Iconos de linea (heredan el color del boton via currentColor) ======
+     Van en SVG y no en emoji: los emoji cambian de dibujo en cada sistema
+     (iOS / Android / Windows) y su color no combina con la paleta. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 21.2s6.8-6.1 6.8-11.2a6.8 6.8 0 1 0-13.6 0c0 5.1 6.8 11.2 6.8 11.2Z"/>
+    <circle cx="12" cy="9.8" r="2.5"/>
+  </symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24">
+    <path d="M20.8 3.2 3.6 10.4a.5.5 0 0 0 .05.94l6.6 2.05 2.05 6.6a.5.5 0 0 0 .94.05L20.8 3.2Z"/>
+  </symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24">
+    <path d="M20.4 11.4a8.2 8.2 0 0 1-12 7.3l-4.8 1.5 1.5-4.5a8.2 8.2 0 1 1 15.3-4.3Z"/>
+    <path d="M8.9 10.2c.3 2.1 2 3.8 4.1 4.1"/>
+  </symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24">
+    <rect x="3.4" y="5.2" width="17.2" height="15.4" rx="2.6"/>
+    <path d="M3.4 10h17.2M8.4 3v4.2M15.6 3v4.2"/>
+    <circle cx="8.9" cy="14" r="1.05" fill="currentColor" stroke="none"/>
+    <circle cx="12.5" cy="14" r="1.05" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <rect x="2.6" y="5" width="18.8" height="14" rx="2.6"/>
+    <path d="m3.4 7.2 8.6 6 8.6-6"/>
+  </symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6"/></symbol>
+</svg>
+<main>
+
+  <!-- ============ 1. LA INVITACIÓN (SVG inline, se inyecta abajo) ============ -->
+  <div class="hero-wrap">
+  <div class="hero" id="hero"><!-- "meet": la invitacion SIEMPRE se ve completa. Nunca recorta, y como el
+     fondo del lienzo es el mismo marfil de la pagina, las franjas sobrantes
+     son invisibles. Con "slice" el recorte dependia del alto real del viewport
+     (dvh cambia al mostrarse/ocultarse la barra del navegador) y se comia los
+     bordes del texto. -->
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1080 2200">
+  <defs>
+  <style>
+    .label  { font-family:'Cormorant Garamond',serif; font-size:31px; font-weight:600; letter-spacing:11px; fill:#75633D; }
+    .name   { font-family:'Great Vibes',cursive; font-size:112px; fill:#6E5D41; }
+    .phrase { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:28px; font-weight:500; fill:#5C6E52; }
+    .detail { font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:500; letter-spacing:2px; fill:#6E5D41; font-weight:500; }
+    .rsvp   { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; letter-spacing:6px; fill:#75633D; }
+  </style>
+
+    <!-- ===================== PALETTE =====================
+         marfil (ivory)      #FBF7F1
+         crema (cream)       #F9F2E6
+         beige claro         #F1E7D3
+         beige profundo      #E3D6BD / #D3C3A5
+         verde salvia        #D3DECC
+         verde eucalipto     #B8C8B5 / #A4B69F
+    ==================================================== -->
+
+    <filter id="paper" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise"/>
+      <feColorMatrix in="noise" type="matrix"
+        values="0 0 0 0 0.86  0 0 0 0 0.82  0 0 0 0 0.74  0 0 0 0.04 0" result="tint"/>
+      <feComposite in="tint" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="fibers" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.18" numOctaves="2" seed="23" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.80  0 0 0 0 0.75  0 0 0 0 0.64  0 0 0 0.08 0" result="t"/>
+      <feComposite in="t" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="wc" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="14"/>
+    </filter>
+    <filter id="wcSoft" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="22" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="2.2"/>
+    </filter>
+    <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="blur14"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="blur28"><feGaussianBlur stdDeviation="28"/></filter>
+
+    <!-- cream rose -->
+    <radialGradient id="goldDot" cx="38%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#F6E3A3"/>
+      <stop offset="45%" stop-color="#E6BE55"/>
+      <stop offset="100%" stop-color="#C9992F"/>
+    </radialGradient>
+    <path id="mleaf" d="M 0 0 Q 5 -2.5 8 -9 Q 2.5 -6.5 0 -1 Z"/>
+    <radialGradient id="creamG" cx="42%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#F9F2E6"/>
+      <stop offset="55%" stop-color="#F1E7D3"/>
+      <stop offset="100%" stop-color="#E9DCC4"/>
+    </radialGradient>
+    <!-- beige rose -->
+    <radialGradient id="beigeG" cx="45%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#F1E7D3"/>
+      <stop offset="60%" stop-color="#E3D6BD"/>
+      <stop offset="100%" stop-color="#D3C3A5"/>
+    </radialGradient>
+    <!-- ivory peony -->
+    <radialGradient id="peonyG" cx="45%" cy="40%" r="72%">
+      <stop offset="0%" stop-color="#FEFCF8"/>
+      <stop offset="55%" stop-color="#F9F2E6"/>
+      <stop offset="100%" stop-color="#F0E6D2"/>
+    </radialGradient>
+    <radialGradient id="sageG" cx="40%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#E3EADD"/>
+      <stop offset="100%" stop-color="#D3DECC"/>
+    </radialGradient>
+    <radialGradient id="eucaG" cx="40%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#CBD8C5"/>
+      <stop offset="100%" stop-color="#B8C8B5"/>
+    </radialGradient>
+    <linearGradient id="dressG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#FBF7F1"/>
+      <stop offset="100%" stop-color="#F6F0E4"/>
+    </linearGradient>
+    <linearGradient id="hairG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8A6A52"/>
+      <stop offset="60%" stop-color="#77573F"/>
+      <stop offset="100%" stop-color="#6A4C38"/>
+    </linearGradient>
+    <radialGradient id="washCream" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F1E7D3" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#F1E7D3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="washSage" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D3DECC" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#D3DECC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="washEuca" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B8C8B5" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#B8C8B5" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- ================= FLORAL SYMBOLS ================= -->
+
+    <!-- open cream rose -->
+    <g id="rose">
+      <g filter="url(#wc)">
+        <circle r="44" fill="url(#creamG)" opacity="0.97"/>
+        <path d="M -34 6 A 34 34 0 1 1 30 -18 A 26 26 0 1 0 -22 -20 A 22 22 0 1 1 -34 6 Z"
+              fill="#E9DCC4" opacity="0.6"/>
+        <path d="M -20 4 A 20 20 0 1 1 18 -10 A 15 15 0 1 0 -12 -12 A 13 13 0 1 1 -20 4 Z"
+              fill="#D8C7A9" opacity="0.6"/>
+        <circle r="9" fill="#D3C3A5" opacity="0.85"/>
+        <circle r="4" cx="1" cy="-1" fill="#C7B592"/>
+      </g>
+      <g fill="#FBF7F1" opacity="0.45" filter="url(#wcSoft)">
+        <ellipse cx="-24" cy="-24" rx="16" ry="9" transform="rotate(-30 -24 -24)"/>
+        <ellipse cx="26" cy="16" rx="13" ry="7" transform="rotate(25 26 16)"/>
+      </g>
+    </g>
+
+    <!-- deep beige rose -->
+    <g id="roseDeep">
+      <g filter="url(#wc)">
+        <circle r="40" fill="url(#beigeG)" opacity="0.97"/>
+        <path d="M -30 8 A 30 30 0 1 1 26 -16 A 23 23 0 1 0 -20 -18 A 19 19 0 1 1 -30 8 Z"
+              fill="#D3C3A5" opacity="0.65"/>
+        <circle r="8" fill="#C2B08E" opacity="0.9"/>
+      </g>
+    </g>
+
+    <!-- ivory peony -->
+    <g id="peony">
+      <g filter="url(#wc)">
+        <circle r="52" fill="url(#peonyG)"/>
+        <g fill="#F0E6D2" opacity="0.6">
+          <ellipse cx="0" cy="-26" rx="24" ry="18"/>
+          <ellipse cx="24" cy="10" rx="22" ry="17" transform="rotate(40 24 10)"/>
+          <ellipse cx="-24" cy="12" rx="22" ry="17" transform="rotate(-40 -24 12)"/>
+          <ellipse cx="0" cy="26" rx="20" ry="15"/>
+        </g>
+        <g fill="#E7DAC0" opacity="0.5">
+          <ellipse cx="-10" cy="-8" rx="16" ry="12" transform="rotate(-20 -10 -8)"/>
+          <ellipse cx="12" cy="-2" rx="14" ry="11" transform="rotate(30 12 -2)"/>
+        </g>
+        <circle r="7" fill="#E3D6BD" opacity="0.85"/>
+        <g fill="#C7B592" opacity="0.8">
+          <circle cx="-4" cy="-3" r="1.6"/><circle cx="4" cy="-4" r="1.4"/>
+          <circle cx="2" cy="4" r="1.5"/><circle cx="-5" cy="4" r="1.3"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- small white wildflower -->
+    <g id="wildflower">
+      <g filter="url(#wc)">
+        <g fill="#FFFFFF" stroke="#F1E7D3" stroke-width="1.5" opacity="0.96">
+          <ellipse cx="0" cy="-13" rx="7" ry="12"/>
+          <ellipse cx="12" cy="-4" rx="7" ry="12" transform="rotate(72 12 -4)"/>
+          <ellipse cx="8" cy="11" rx="7" ry="12" transform="rotate(144 8 11)"/>
+          <ellipse cx="-8" cy="11" rx="7" ry="12" transform="rotate(-144 -8 11)"/>
+          <ellipse cx="-12" cy="-4" rx="7" ry="12" transform="rotate(-72 -12 -4)"/>
+        </g>
+        <circle r="4.5" fill="#D3C3A5" opacity="0.9"/>
+      </g>
+    </g>
+
+    <!-- cream rosebud -->
+    <g id="bud">
+      <g filter="url(#wc)">
+        <ellipse cx="0" cy="0" rx="9" ry="13" fill="url(#creamG)"/>
+        <path d="M -8 6 Q 0 16 8 6 Q 4 12 0 13 Q -4 12 -8 6 Z" fill="#D3DECC"/>
+        <path d="M 0 -12 Q 5 -4 2 4 Q 0 -2 -3 -6 Z" fill="#D8C7A9" opacity="0.6"/>
+      </g>
+    </g>
+
+    <!-- eucalyptus branch -->
+    <g id="euca">
+      <g filter="url(#wc)">
+        <path d="M 0 0 C 4 -50 -4 -100 2 -150" fill="none" stroke="#A4B69F" stroke-width="3" stroke-linecap="round"/>
+        <g fill="url(#eucaG)" opacity="0.94">
+          <circle cx="-13" cy="-18" r="11"/><circle cx="14" cy="-32" r="11"/>
+          <circle cx="-14" cy="-50" r="10.5"/><circle cx="13" cy="-66" r="10"/>
+          <circle cx="-12" cy="-84" r="9.5"/><circle cx="12" cy="-100" r="9"/>
+          <circle cx="-10" cy="-116" r="8.5"/><circle cx="9" cy="-131" r="8"/>
+          <circle cx="0" cy="-148" r="7"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- pointed sage sprig -->
+    <g id="sprig">
+      <g filter="url(#wc)">
+        <path d="M 0 0 C 3 -40 -3 -80 1 -118" fill="none" stroke="#B3C2AB" stroke-width="2.6" stroke-linecap="round"/>
+        <g fill="#D3DECC" opacity="0.92">
+          <path d="M -2 -20 Q -26 -30 -30 -46 Q -10 -42 -2 -26 Z"/>
+          <path d="M 2 -34 Q 26 -44 30 -60 Q 10 -56 2 -40 Z"/>
+          <path d="M -2 -52 Q -24 -62 -27 -77 Q -9 -73 -2 -58 Z"/>
+          <path d="M 2 -68 Q 24 -78 27 -92 Q 9 -88 2 -74 Z"/>
+          <path d="M -1 -86 Q -20 -96 -22 -109 Q -7 -105 -1 -91 Z"/>
+          <path d="M 1 -100 Q 18 -110 20 -122 Q 6 -118 1 -105 Z"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- tiny crown leaf pair: one sage, one eucalyptus -->
+    <g id="tinyLeaf">
+      <path d="M 0 0 Q -12 -6 -16 -16 Q -5 -13 0 -3 Z" fill="#D3DECC"/>
+      <path d="M 0 0 Q 12 -6 16 -16 Q 5 -13 0 -3 Z" fill="#B8C8B5"/>
+    </g>
+
+    <!-- tiny cream flower -->
+    <g id="tinyFlower">
+      <g fill="#F1E7D3">
+        <circle cx="0" cy="-5" r="4"/><circle cx="5" cy="-1.5" r="4"/>
+        <circle cx="3" cy="4.5" r="4"/><circle cx="-3" cy="4.5" r="4"/><circle cx="-5" cy="-1.5" r="4"/>
+      </g>
+      <circle r="2.2" fill="#C7B592"/>
+    </g>
+
+    <!-- media guirnalda del separador: se dibuja hacia la izquierda y se usa espejada -->
+    <g id="sepHalf">
+      <line x1="-64" y1="0" x2="-196" y2="0" stroke="#B7A377" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
+      <line x1="-208" y1="0" x2="-238" y2="0" stroke="#B7A377" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+      <circle cx="-250" cy="0" r="2" fill="#B7A377" opacity="0.55"/>
+      <circle cx="-56" cy="0" r="2.4" fill="#B7A377" opacity="0.9"/>
+      <use href="#tinyLeaf" transform="translate(-44 0) rotate(-90) scale(0.6)"/>
+      <use href="#tinyLeaf" transform="translate(-22 0) rotate(-90) scale(0.95)"/>
+    </g>
+
+    <!-- warm beige-gold speckles -->
+    <g id="speckles" fill="#D3C3A5">
+      <circle cx="0" cy="0" r="2"/><circle cx="14" cy="-9" r="1.3"/>
+      <circle cx="-11" cy="7" r="1.5"/><circle cx="24" cy="4" r="1"/>
+      <circle cx="-20" cy="-12" r="1.1"/><circle cx="6" cy="15" r="1.2"/>
+    </g>
+  </defs>
+
+  <!-- ======================= BACKGROUND ======================= -->
+  <rect width="1080" height="2200" fill="#FBF7F1"/>
+  <rect width="1080" height="2200" fill="#FBF7F1" filter="url(#paper)" opacity="0.9"/>
+  <rect width="1080" height="2200" fill="#FBF7F1" filter="url(#fibers)" opacity="0.55"/>
+
+  <!-- soft corner washes -->
+  <ellipse cx="60" cy="120" rx="300" ry="240" fill="url(#washCream)" filter="url(#blur28)"/>
+  <ellipse cx="1030" cy="150" rx="280" ry="230" fill="url(#washSage)" filter="url(#blur28)" opacity="0.75"/>
+  <ellipse cx="90" cy="1990" rx="260" ry="220" fill="url(#washEuca)" filter="url(#blur28)" opacity="0.85"/>
+  <ellipse cx="1010" cy="1970" rx="270" ry="220" fill="url(#washCream)" filter="url(#blur28)" opacity="0.85"/>
+
+  
+  
+  
+  <!-- ============= BORDES: composiciones florales en esquinas y laterales ============= -->
+  <g>
+    <!-- esquina superior izquierda -->
+    <use href="#euca" transform="translate(18 14) rotate(137) scale(1.05)"/>
+    <use href="#sprig" transform="translate(96 -6) rotate(163) scale(0.95)"/>
+    <use href="#rose" transform="translate(60 72) scale(0.68) rotate(-10)"/>
+    <use href="#peony" transform="translate(128 34) scale(0.55) rotate(12)"/>
+    <use href="#bud" transform="translate(118 118) rotate(28) scale(0.95)"/>
+    <use href="#wildflower" transform="translate(168 78) scale(0.8)"/>
+    <use href="#tinyFlower" transform="translate(48 156) scale(1.1)"/>
+    <use href="#speckles" transform="translate(190 130)" opacity="0.7"/>
+    <!-- esquina superior derecha -->
+    <use href="#euca" transform="translate(1062 14) rotate(-137) scale(-1.05 1.05)"/>
+    <use href="#sprig" transform="translate(984 -6) rotate(-163) scale(-0.95 0.95)"/>
+    <use href="#rose" transform="translate(1020 72) scale(0.68) rotate(10)"/>
+    <use href="#peony" transform="translate(952 34) scale(0.55) rotate(-12)"/>
+    <use href="#bud" transform="translate(962 118) rotate(-28) scale(0.95)"/>
+    <use href="#wildflower" transform="translate(912 78) scale(0.8)"/>
+    <use href="#tinyFlower" transform="translate(1032 156) scale(1.1)"/>
+    <use href="#speckles" transform="translate(890 130)" opacity="0.7"/>
+    <g transform="translate(0 2200) scale(1 -1)">
+    <!-- esquina superior izquierda -->
+    <use href="#euca" transform="translate(18 14) rotate(137) scale(1.05)"/>
+    <use href="#sprig" transform="translate(96 -6) rotate(163) scale(0.95)"/>
+    <use href="#rose" transform="translate(60 72) scale(0.68) rotate(-10)"/>
+    <use href="#peony" transform="translate(128 34) scale(0.55) rotate(12)"/>
+    <use href="#bud" transform="translate(118 118) rotate(28) scale(0.95)"/>
+    <use href="#wildflower" transform="translate(168 78) scale(0.8)"/>
+    <use href="#tinyFlower" transform="translate(48 156) scale(1.1)"/>
+    <use href="#speckles" transform="translate(190 130)" opacity="0.7"/>
+    <!-- esquina superior derecha -->
+    <use href="#euca" transform="translate(1062 14) rotate(-137) scale(-1.05 1.05)"/>
+    <use href="#sprig" transform="translate(984 -6) rotate(-163) scale(-0.95 0.95)"/>
+    <use href="#rose" transform="translate(1020 72) scale(0.68) rotate(10)"/>
+    <use href="#peony" transform="translate(952 34) scale(0.55) rotate(-12)"/>
+    <use href="#bud" transform="translate(962 118) rotate(-28) scale(0.95)"/>
+    <use href="#wildflower" transform="translate(912 78) scale(0.8)"/>
+    <use href="#tinyFlower" transform="translate(1032 156) scale(1.1)"/>
+    <use href="#speckles" transform="translate(890 130)" opacity="0.7"/>
+    </g>
+    <!-- lateral izquierdo: cascada de eucalipto y flores -->
+    <use href="#euca" transform="translate(10 430) rotate(160) scale(0.95)"/>
+    <use href="#sprig" transform="translate(22 505) rotate(122) scale(0.8)"/>
+    <use href="#wildflower" transform="translate(60 540) scale(0.7)"/>
+    <use href="#rose" transform="translate(36 592) scale(0.52) rotate(-8)"/>
+    <use href="#tinyFlower" transform="translate(68 590) scale(0.7)"/>
+    <use href="#bud" transform="translate(54 634) rotate(42) scale(0.85)"/>
+    <use href="#euca" transform="translate(2 645) rotate(140) scale(0.75)"/>
+    <use href="#peony" transform="translate(20 672) scale(0.46) rotate(10)"/>
+    <use href="#tinyFlower" transform="translate(14 712) scale(0.85)"/>
+    <use href="#wildflower" transform="translate(46 724) scale(0.62)"/>
+    <use href="#bud" transform="translate(26 764) rotate(18) scale(0.75)"/>
+    <use href="#speckles" transform="translate(82 622) scale(0.85)" opacity="0.65"/>
+    <use href="#speckles" transform="translate(40 792) scale(0.75)" opacity="0.6"/>
+    <!-- lateral derecho: cascada de eucalipto y flores -->
+    <use href="#euca" transform="translate(1070 430) rotate(-160) scale(-0.95 0.95)"/>
+    <use href="#sprig" transform="translate(1058 505) rotate(-122) scale(-0.8 0.8)"/>
+    <use href="#wildflower" transform="translate(1020 540) scale(0.7)"/>
+    <use href="#rose" transform="translate(1044 592) scale(0.52) rotate(8)"/>
+    <use href="#tinyFlower" transform="translate(1012 590) scale(0.7)"/>
+    <use href="#bud" transform="translate(1026 634) rotate(-42) scale(0.85)"/>
+    <use href="#euca" transform="translate(1078 645) rotate(-140) scale(-0.75 0.75)"/>
+    <use href="#peony" transform="translate(1060 672) scale(0.46) rotate(-10)"/>
+    <use href="#tinyFlower" transform="translate(1066 712) scale(0.85)"/>
+    <use href="#wildflower" transform="translate(1034 724) scale(0.62)"/>
+    <use href="#bud" transform="translate(1054 764) rotate(-18) scale(0.75)"/>
+    <use href="#speckles" transform="translate(998 622) scale(0.85)" opacity="0.65"/>
+    <use href="#speckles" transform="translate(1040 792) scale(0.75)" opacity="0.6"/>
+    <g transform="translate(0 890)">
+    <!-- lateral izquierdo: cascada de eucalipto y flores -->
+    <use href="#euca" transform="translate(10 430) rotate(160) scale(0.95)"/>
+    <use href="#sprig" transform="translate(22 505) rotate(122) scale(0.8)"/>
+    <use href="#wildflower" transform="translate(60 540) scale(0.7)"/>
+    <use href="#rose" transform="translate(36 592) scale(0.52) rotate(-8)"/>
+    <use href="#tinyFlower" transform="translate(68 590) scale(0.7)"/>
+    <use href="#bud" transform="translate(54 634) rotate(42) scale(0.85)"/>
+    <use href="#euca" transform="translate(2 645) rotate(140) scale(0.75)"/>
+    <use href="#peony" transform="translate(20 672) scale(0.46) rotate(10)"/>
+    <use href="#tinyFlower" transform="translate(14 712) scale(0.85)"/>
+    <use href="#wildflower" transform="translate(46 724) scale(0.62)"/>
+    <use href="#bud" transform="translate(26 764) rotate(18) scale(0.75)"/>
+    <use href="#speckles" transform="translate(82 622) scale(0.85)" opacity="0.65"/>
+    <use href="#speckles" transform="translate(40 792) scale(0.75)" opacity="0.6"/>
+    <!-- lateral derecho: cascada de eucalipto y flores -->
+    <use href="#euca" transform="translate(1070 430) rotate(-160) scale(-0.95 0.95)"/>
+    <use href="#sprig" transform="translate(1058 505) rotate(-122) scale(-0.8 0.8)"/>
+    <use href="#wildflower" transform="translate(1020 540) scale(0.7)"/>
+    <use href="#rose" transform="translate(1044 592) scale(0.52) rotate(8)"/>
+    <use href="#tinyFlower" transform="translate(1012 590) scale(0.7)"/>
+    <use href="#bud" transform="translate(1026 634) rotate(-42) scale(0.85)"/>
+    <use href="#euca" transform="translate(1078 645) rotate(-140) scale(-0.75 0.75)"/>
+    <use href="#peony" transform="translate(1060 672) scale(0.46) rotate(-10)"/>
+    <use href="#tinyFlower" transform="translate(1066 712) scale(0.85)"/>
+    <use href="#wildflower" transform="translate(1034 724) scale(0.62)"/>
+    <use href="#bud" transform="translate(1054 764) rotate(-18) scale(0.75)"/>
+    <use href="#speckles" transform="translate(998 622) scale(0.85)" opacity="0.65"/>
+    <use href="#speckles" transform="translate(1040 792) scale(0.75)" opacity="0.6"/>
+    </g>
+    <!-- brillo dorado en florales -->
+    <g fill="url(#goldDot)">
+      <circle cx="152" cy="58" r="2.6" opacity="0.9"/><circle cx="98" cy="134" r="2" opacity="0.85"/><circle cx="206" cy="104" r="2.2" opacity="0.85"/>
+      <circle cx="928" cy="58" r="2.6" opacity="0.9"/><circle cx="982" cy="134" r="2" opacity="0.85"/><circle cx="874" cy="104" r="2.2" opacity="0.85"/>
+      <circle cx="74" cy="556" r="2.2" opacity="0.85"/><circle cx="52" cy="700" r="2.4" opacity="0.85"/><circle cx="90" cy="646" r="1.8" opacity="0.8"/>
+      <circle cx="1006" cy="556" r="2.2" opacity="0.85"/><circle cx="1028" cy="700" r="2.4" opacity="0.85"/><circle cx="990" cy="646" r="1.8" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- ============= TOP-CENTER: foliage cross ============= -->
+  <g transform="translate(540 330) scale(1.34)">
+    <circle r="120" fill="url(#washCream)" filter="url(#blur28)" opacity="0.7"/>
+    <circle cx="0" cy="-18" r="96" fill="none" stroke="#C9B58C" stroke-width="1.3" stroke-dasharray="0.1 8" stroke-linecap="round" opacity="0.75"/>
+    <circle cx="0" cy="-18" r="80" fill="none" stroke="#D3C3A5" stroke-width="1.1" stroke-dasharray="0.1 6" stroke-linecap="round" opacity="0.6"/>
+    <g fill="url(#goldDot)">
+      <circle cx="60" cy="-70" r="2" opacity="0.95"/><circle cx="-64" cy="-58" r="1.8" opacity="0.85"/>
+      <circle cx="78" cy="10" r="2.2" opacity="0.95"/><circle cx="-80" cy="-2" r="1.8" opacity="0.85"/>
+      <circle cx="42" cy="58" r="2" opacity="0.9"/><circle cx="-46" cy="52" r="1.8" opacity="0.85"/>
+      <circle cx="0" cy="-106" r="2.2" opacity="0.95"/><circle cx="24" cy="-88" r="1.6" opacity="0.8"/>
+    </g>
+    
+    
+    <g filter="url(#wc)">
+      <path d="M 0 -78 L 0 82" stroke="#A4B69F" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      <path d="M -52 -18 L 52 -18" stroke="#A4B69F" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+    </g>
+    <use href="#tinyLeaf" transform="translate(0 -62) scale(0.9)"/>
+    <use href="#tinyLeaf" transform="translate(0 -44)"/>
+    <use href="#tinyLeaf" transform="translate(0 4)"/>
+    <use href="#tinyLeaf" transform="translate(0 26)"/>
+    <use href="#tinyLeaf" transform="translate(0 48)"/>
+    <use href="#tinyLeaf" transform="translate(0 70) scale(0.9)"/>
+    <use href="#tinyLeaf" transform="translate(-42 -16) rotate(-90) scale(0.9)"/>
+    <use href="#tinyLeaf" transform="translate(-24 -16) rotate(-90)"/>
+    <use href="#tinyLeaf" transform="translate(24 -16) rotate(90)"/>
+    <use href="#tinyLeaf" transform="translate(42 -16) rotate(90) scale(0.9)"/>
+    <use href="#rose" transform="translate(0 -18) scale(0.4)"/>
+    <use href="#tinyLeaf" transform="translate(-16 -6) rotate(-135) scale(0.8)"/>
+    <use href="#tinyLeaf" transform="translate(16 -6) rotate(135) scale(-0.8 0.8)"/>
+    <use href="#tinyFlower" transform="translate(0 -76) scale(0.95)"/>
+    <use href="#tinyFlower" transform="translate(0 82) scale(0.95)"/>
+    <use href="#tinyFlower" transform="translate(-54 -18) scale(0.9)"/>
+    <use href="#tinyFlower" transform="translate(54 -18) scale(0.9)"/>
+    <use href="#tinyFlower" transform="translate(0 -46) scale(0.6)"/>
+    <use href="#tinyFlower" transform="translate(0 42) scale(0.6)"/>
+    <use href="#bud" transform="translate(-32 -34) rotate(-30) scale(0.7)"/>
+    <use href="#bud" transform="translate(32 -34) rotate(30) scale(0.7)"/>
+    <use href="#bud" transform="translate(-14 62) rotate(-155) scale(0.6)"/>
+    <use href="#bud" transform="translate(14 62) rotate(155) scale(0.6)"/>
+    <use href="#wildflower" transform="translate(0 -94) scale(0.55)"/>
+    <use href="#tinyFlower" transform="translate(-38 -30) scale(0.55)"/>
+    <use href="#tinyFlower" transform="translate(38 -30) scale(0.55)"/>
+    <use href="#speckles" transform="translate(70 -60)" opacity="0.6"/>
+    <use href="#speckles" transform="translate(-78 30) scale(0.9)" opacity="0.6"/>
+  </g>
+
+  <!-- ====== RESERVED NEGATIVE SPACE: y ~ 320-640 (text area) ====== -->
+
+  <!-- ============= CENTER-BOTTOM: kneeling girl ============= -->
+  <g transform="translate(540 400) scale(0.97)">
+    <ellipse cx="0" cy="840" rx="265" ry="290" fill="url(#washSage)" filter="url(#blur28)"/>
+    <ellipse cx="0" cy="880" rx="195" ry="220" fill="url(#washCream)" filter="url(#blur28)" opacity="0.9"/>
+    <ellipse cx="0" cy="1035" rx="205" ry="36" fill="#E5D9C0" opacity="0.8" filter="url(#blur14)"/>
+    <ellipse cx="0" cy="1032" rx="150" ry="26" fill="#C9D6C3" opacity="0.25" filter="url(#blur14)"/>
+
+    <g filter="url(#wcSoft)">
+      <path d="M -58 800
+               C -96 860 -138 930 -160 1000
+               C -172 1032 -150 1042 -110 1044
+               C -40 1048 40 1048 110 1044
+               C 150 1042 172 1032 160 1000
+               C 138 930 96 860 58 800 Z"
+            fill="url(#dressG)" stroke="#D5C6A8" stroke-width="2.4"/>
+      
+      <path d="M -58 800 C -96 860 -138 930 -160 1000 C -168 1026 -156 1038 -128 1042 C -146 1008 -136 938 -110 878 C -94 840 -76 816 -58 800 Z" fill="#EBDFC7" opacity="0.5"/>
+      <path d="M 58 800 C 96 860 138 930 160 1000 C 168 1026 156 1038 128 1042 C 146 1008 136 938 110 878 C 94 840 76 816 58 800 Z" fill="#EBDFC7" opacity="0.5"/>
+      <g stroke="#E9DDC5" stroke-width="3" fill="none" opacity="0.8" stroke-linecap="round">
+        <path d="M -44 832 C -64 900 -80 958 -92 1016"/>
+        <path d="M -16 822 C -22 900 -24 960 -24 1026"/>
+        <path d="M 16 822 C 22 900 24 960 24 1026"/>
+        <path d="M 44 832 C 64 900 80 958 92 1016"/>
+      </g>
+      <g stroke="#F3EBD9" stroke-width="2.4" fill="none" opacity="0.7" stroke-linecap="round">
+        <path d="M -112 916 C -124 956 -134 988 -140 1014"/>
+        <path d="M 112 916 C 124 956 134 988 140 1014"/>
+        <path d="M -70 860 C -80 910 -88 950 -94 990"/>
+        <path d="M 70 860 C 80 910 88 950 94 990"/>
+      </g>
+      <!-- sobrefalda de tul -->
+      <path d="M -60 806 C -106 868 -150 938 -172 1010 C -180 1038 -158 1050 -114 1053 C -42 1058 42 1058 114 1053 C 158 1050 180 1038 172 1010 C 150 938 106 868 60 806 Z"
+            fill="#FFFFFF" opacity="0.28" filter="url(#blur6)"/>
+      <!-- franja de sombra del dobladillo -->
+      <path d="M -150 1008 C -80 1038 80 1038 150 1008 C 150 1032 120 1042 0 1045 C -120 1042 -150 1032 -150 1008 Z"
+            fill="#EFE5D0" opacity="0.6"/>
+      <!-- encaje festoneado -->
+      <path d="M -150 1007 Q -138 1021 -125 1014 Q -112 1027 -100 1021 Q -88 1033 -75 1026 Q -62 1038 -50 1030 Q -38 1041 -25 1033 Q -12 1043 0 1034 Q 12 1043 25 1033 Q 38 1041 50 1030 Q 62 1038 75 1026 Q 88 1033 100 1021 Q 112 1027 125 1014 Q 138 1021 150 1007" fill="none" stroke="#D8C8A6" stroke-width="2.4" opacity="0.95" stroke-linecap="round"/>
+      <circle cx="-138" cy="997" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="-112" cy="1004" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="-88" cy="1009" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="-62" cy="1014" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="-38" cy="1017" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="-12" cy="1020" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="12" cy="1020" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="38" cy="1017" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="62" cy="1014" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="88" cy="1009" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="112" cy="1004" r="1.8" fill="#D8C8A6" opacity="0.85"/><circle cx="138" cy="997" r="1.8" fill="#D8C8A6" opacity="0.85"/>
+      <!-- bordaditos florales en la falda -->
+      <g fill="#DFD2B4" opacity="0.9">
+        <g transform="translate(-78 934)"><circle r="2.2"/><circle cx="5" cy="-4" r="1.6"/><circle cx="-5" cy="-4" r="1.6"/><circle cy="-7" r="1.6"/></g>
+        <g transform="translate(38 902) scale(0.9)"><circle r="2.2"/><circle cx="5" cy="-4" r="1.6"/><circle cx="-5" cy="-4" r="1.6"/><circle cy="-7" r="1.6"/></g>
+        <g transform="translate(96 962) scale(0.85)"><circle r="2.2"/><circle cx="5" cy="-4" r="1.6"/><circle cx="-5" cy="-4" r="1.6"/><circle cy="-7" r="1.6"/></g>
+        <g transform="translate(-30 986) scale(0.85)"><circle r="2.2"/><circle cx="5" cy="-4" r="1.6"/><circle cx="-5" cy="-4" r="1.6"/><circle cy="-7" r="1.6"/></g>
+        <g transform="translate(-116 972) scale(0.8)"><circle r="2.2"/><circle cx="5" cy="-4" r="1.6"/><circle cx="-5" cy="-4" r="1.6"/><circle cy="-7" r="1.6"/></g>
+        <g transform="translate(118 918) scale(0.75)"><circle r="2.2"/><circle cx="5" cy="-4" r="1.6"/><circle cx="-5" cy="-4" r="1.6"/><circle cy="-7" r="1.6"/></g>
+        <g transform="translate(-52 890) scale(0.75)"><circle r="2.2"/><circle cx="5" cy="-4" r="1.6"/><circle cx="-5" cy="-4" r="1.6"/><circle cy="-7" r="1.6"/></g>
+      </g>
+      <!-- perlitas sobre el tul -->
+      <g fill="#FEFCF7" stroke="#D8C8A6" stroke-width="0.9">
+        <circle cx="-98" cy="912" r="2.6"/><circle cx="64" cy="874" r="2.4"/>
+        <circle cx="8" cy="946" r="2.6"/><circle cx="-58" cy="1002" r="2.4"/>
+        <circle cx="126" cy="990" r="2.4"/><circle cx="-134" cy="1000" r="2.2"/>
+      </g>
+
+      <path d="M -56 806
+               C -60 762 -58 726 -44 700
+               C -30 678 30 678 44 700
+               C 58 726 60 762 56 806
+               C 20 818 -20 818 -56 806 Z"
+            fill="url(#dressG)" stroke="#D5C6A8" stroke-width="2.6"/>
+      <path d="M 0 690 C 1 730 1 770 0 806" stroke="#F2EBDD" stroke-width="4" fill="none" opacity="0.85"/>
+      <path d="M -42 704 C -72 714 -86 746 -78 780 C -74 798 -54 800 -47 786 C -40 762 -38 732 -32 710 Z"
+            fill="#FFFFFF" opacity="0.97" stroke="#D5C6A8" stroke-width="2"/>
+      <path d="M -80 778 C -71 786 -57 788 -47 784 L -50 797 C -60 801 -74 799 -83 790 Z" fill="#F1E7D3" stroke="#DCCDAF" stroke-width="1.2"/>
+      <circle cx="-64" cy="790" r="2.6" fill="#FEFCF7" stroke="#D8C8A6" stroke-width="0.9"/>
+      <path d="M 42 704 C 72 714 86 746 78 780 C 74 798 54 800 47 786 C 40 762 38 732 32 710 Z"
+            fill="#FFFFFF" opacity="0.97" stroke="#D5C6A8" stroke-width="2"/>
+      <path d="M 80 778 C 71 786 57 788 47 784 L 50 797 C 60 801 74 799 83 790 Z" fill="#F1E7D3" stroke="#DCCDAF" stroke-width="1.2"/>
+      <circle cx="64" cy="790" r="2.6" fill="#FEFCF7" stroke="#D8C8A6" stroke-width="0.9"/>
+      
+
+      <path d="M -12 668 C -12 680 12 680 12 668 L 12 654 L -12 654 Z" fill="#F0DBCC"/>
+      <circle cx="0" cy="620" r="52" fill="#F0DBCC"/>
+
+      <path d="M -52 612
+               C -58 570 -30 556 0 556
+               C 30 556 58 570 52 612
+               C 58 652 58 692 53 726
+               C 49 760 27 772 0 774
+               C -27 772 -49 760 -53 726
+               C -58 692 -58 652 -52 612 Z"
+            fill="url(#hairG)"/>
+      <g stroke="#5E4330" stroke-width="3.2" fill="none" opacity="0.55" stroke-linecap="round">
+        <path d="M -34 590 C -39 640 -41 690 -37 748"/>
+        <path d="M -14 574 C -17 640 -17 700 -14 762"/>
+        <path d="M 8 572 C 10 640 11 700 10 762"/>
+        <path d="M 30 586 C 34 640 37 690 34 748"/>
+      </g>
+      <g stroke="#9A7A5E" stroke-width="2.4" fill="none" opacity="0.6" stroke-linecap="round">
+        <path d="M -24 582 C -27 640 -29 690 -25 754"/>
+        <path d="M 20 578 C 23 640 25 690 23 756"/>
+        <path d="M 0 570 C -1 640 -1 700 0 768"/>
+      </g>
+      <path d="M -47 712 C -52 740 -42 764 -18 772 C -33 758 -41 736 -41 714 Z" fill="#6A4C38" opacity="0.8"/>
+      <path d="M 47 712 C 52 740 42 764 18 772 C 33 758 41 736 41 714 Z" fill="#6A4C38" opacity="0.8"/>
+      <!-- fajin -->
+      <path d="M -57 792 C -20 804 20 804 57 792 L 58 812 C 20 824 -20 824 -58 812 Z"
+            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.6"/>
+      <path d="M -57 800 C -20 811 20 811 57 800" stroke="#E6D9BE" stroke-width="1.6" fill="none" opacity="0.8"/>
+      <!-- mono -->
+      <path d="M -3 808 C -24 794 -48 797 -52 813 C -54 828 -32 835 -13 826 C -7 822 -4 815 -3 808 Z"
+            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.6"/>
+      <path d="M 3 808 C 24 794 48 797 52 813 C 54 828 32 835 13 826 C 7 822 4 815 3 808 Z"
+            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.6"/>
+      <path d="M -38 810 C -32 817 -22 821 -13 819" stroke="#E6D9BE" stroke-width="1.8" fill="none" opacity="0.9"/>
+      <path d="M 38 810 C 32 817 22 821 13 819" stroke="#E6D9BE" stroke-width="1.8" fill="none" opacity="0.9"/>
+      <rect x="-8" y="804" width="16" height="15" rx="6" fill="#E8DAC0" stroke="#DCCDAF" stroke-width="1.2"/>
+      <!-- caidas del mono -->
+      <path d="M -6 818 C -14 850 -18 880 -13 910 L -26 907 C -29 874 -23 842 -15 815 Z"
+            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.4"/>
+      <path d="M 6 818 C 14 850 18 880 13 910 L 26 907 C 29 874 23 842 15 815 Z"
+            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.4"/>
+      <path d="M -26 907 L -13 910 L -22 921 Z" fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.1"/>
+      <path d="M 26 907 L 13 910 L 22 921 Z" fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.1"/>
+    </g>
+
+    <!-- crown of cream flowers, sage and eucalyptus -->
+    <g transform="translate(0 583)">
+      <path d="M -52 6 C -30 -14 30 -14 52 6" stroke="#B3C2AB" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#wc)"/>
+      <use href="#tinyLeaf" transform="translate(-46 2) rotate(-52) scale(1.05)"/>
+      <use href="#tinyLeaf" transform="translate(-28 -6) rotate(-24)"/>
+      <use href="#tinyLeaf" transform="translate(28 -6) rotate(24) scale(-1 1)"/>
+      <use href="#tinyLeaf" transform="translate(46 2) rotate(52) scale(-1.05 1.05)"/>
+      <use href="#tinyFlower" transform="translate(-38 -1) scale(0.85)"/>
+      <use href="#tinyFlower" transform="translate(-14 -8)"/>
+      <use href="#tinyFlower" transform="translate(14 -8)"/>
+      <use href="#tinyFlower" transform="translate(38 -1) scale(0.85)"/>
+      <use href="#bud" transform="translate(0 -10) scale(0.62)"/>
+      <use href="#speckles" transform="translate(62 -12) scale(0.7)" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- ====== RESERVED CLEAN BAND: y ~ 1300-1350 (bottom text) ====== -->
+
+  <!-- ================== TEXTO (zona superior reservada) ================== -->
+  <g text-anchor="middle" transform="translate(0 235)">
+    <text x="540" y="354" class="label" style="font-size:56px; font-weight:600">MI PRIMERA COMUNIÓN</text>
+    <text x="540" y="403" class="phrase" style="font-size:46px">Con alegría recibiré por primera vez</text>
+    <text x="540" y="453" class="phrase" style="font-size:46px">a Jesús en la Sagrada Eucaristía</text>
+    <!-- polvo dorado alrededor del nombre (sigue al nombre, que bajo 21) -->
+    <g transform="translate(0 61)">
+    <g fill="url(#goldDot)">
+      <circle cx="216" cy="482" r="3" opacity="1"/><circle cx="252" cy="452" r="2" opacity="0.85"/>
+      <circle cx="188" cy="530" r="2.2" opacity="0.9"/><circle cx="290" cy="576" r="1.8" opacity="0.8"/>
+      <circle cx="238" cy="598" r="2.6" opacity="0.95"/><circle cx="330" cy="446" r="1.6" opacity="0.75"/>
+      <circle cx="864" cy="478" r="3" opacity="1"/><circle cx="830" cy="450" r="2" opacity="0.85"/>
+      <circle cx="892" cy="528" r="2.2" opacity="0.9"/><circle cx="792" cy="574" r="1.8" opacity="0.8"/>
+      <circle cx="844" cy="598" r="2.6" opacity="0.95"/><circle cx="754" cy="448" r="1.6" opacity="0.75"/>
+      <circle cx="404" cy="560" r="1.6" opacity="0.7"/><circle cx="676" cy="558" r="1.6" opacity="0.7"/>
+      <circle cx="540" cy="446" r="1.8" opacity="0.75"/><circle cx="600" cy="606" r="1.8" opacity="0.75"/>
+    </g>
+    <g fill="url(#goldDot)" opacity="0.95">
+      <path transform="translate(206 468)" d="M 0 -7 Q 1.4 -1.4 7 0 Q 1.4 1.4 0 7 Q -1.4 1.4 -7 0 Q -1.4 -1.4 0 -7 Z"/>
+      <path transform="translate(876 464) scale(0.85)" d="M 0 -7 Q 1.4 -1.4 7 0 Q 1.4 1.4 0 7 Q -1.4 1.4 -7 0 Q -1.4 -1.4 0 -7 Z"/>
+      <path transform="translate(560 616) scale(0.6)" d="M 0 -7 Q 1.4 -1.4 7 0 Q 1.4 1.4 0 7 Q -1.4 1.4 -7 0 Q -1.4 -1.4 0 -7 Z"/>
+    </g>
+    </g>
+    <text x="540" y="581" class="name" style="font-size:124px">María Alejandra</text>
+    <text x="540" y="643" class="name" style="font-size:64px">Zapata Chacón</text>
+  </g>
+  <!-- ================== TEXTO (banda inferior reservada) ================== -->
+  <g text-anchor="middle" transform="translate(0 428)">
+    <!-- separador floral entre la nina y los datos (bajo el ruedo del vestido) -->
+    <g transform="translate(540 1052)">
+      <use href="#sepHalf"/>
+      <use href="#sepHalf" transform="scale(-1 1)"/>
+      <use href="#tinyFlower" transform="translate(0 -1) scale(1.25)"/>
+    </g>
+    <!-- fecha protagonista -->
+    <text x="540" y="1140" class="detail" style="font-size:70px; letter-spacing:2px">Sábado 5 de septiembre de 2026</text>
+    <!-- los dos momentos, apilados: en movil no cabe a dos columnas -->
+    <text x="540" y="1220" class="rsvp" style="font-size:44px; letter-spacing:3px">CEREMONIA · 10:00 A.M.</text>
+    <text x="540" y="1278" class="detail" style="font-size:60px; font-weight:600">Sagrado Corazón de Jesús</text>
+    <g transform="translate(540 1314)">
+      <line x1="-96" y1="0" x2="-14" y2="0" stroke="#B7A377" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+      <line x1="14" y1="0" x2="96" y2="0" stroke="#B7A377" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+      <circle cx="0" cy="0" r="2.6" fill="#B7A377" opacity="0.9"/>
+    </g>
+    <text x="540" y="1350" class="rsvp" style="font-size:44px; letter-spacing:3px">RECEPCIÓN · AL FINALIZAR</text>
+    <text x="540" y="1408" class="detail" style="font-size:60px; font-weight:600">Hacienda Casa Antonio</text>
+    <!-- cierre emotivo -->
+    <text x="540" y="1476" class="phrase" style="font-size:46px">Espero contar con tu presencia,</text>
+    <text x="540" y="1526" class="phrase" style="font-size:46px">tu compañía hará de este día un recuerdo inolvidable.</text>
+  </g>
+</svg>
+
+
+
+
+
+
+</div>
+  <div class="scroll-hint"><span><svg class="ico ico-chev"><use href="#i-chev"/></svg></span>&nbsp; desliza para confirmar &nbsp;<span><svg class="ico ico-chev"><use href="#i-chev"/></svg></span></div>
+  </div>
+
+  <!-- ============ 2. CUENTA REGRESIVA ============ -->
+  <section class="fade">
+    <h2>Faltan</h2>
+    <div class="divisor"><i></i></div>
+    <div class="count" id="count">
+      <div><b id="cd">–</b><small>días</small></div>
+      <div><b id="ch">–</b><small>horas</small></div>
+      <div><b id="cm">–</b><small>min</small></div>
+      <div><b id="cs">–</b><small>seg</small></div>
+    </div>
+    <div class="centro mt">
+      <a class="btn btn-linea" id="btn-cal" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-cal"/></svg> Agregar al calendario</a>
+    </div>
+  </section>
+
+  <!-- ============ 3. UBICACIONES ============ -->
+  <section class="fade">
+    <h2>Ubicaciones</h2>
+    <p class="h2-sub">Toca un botón y tu mapa te llevará</p>
+
+    <div class="card">
+      <div class="etiqueta">CEREMONIA · 10:00 A.M.</div>
+      <div class="lugar">Sagrado Corazón de Jesús</div>
+      <div class="hora">Sábado 5 de septiembre de 2026</div>
+      <div class="botones">
+        <!-- TODO Robert: verifica que el query apunte a la parroquia correcta (ciudad/dirección) -->
+        <a class="btn btn-oro" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Parroquia+Sagrado+Coraz%C3%B3n+de+Jes%C3%BAs+Bucaramanga"><svg class="ico"><use href="#i-pin"/></svg> Google Maps</a>
+        <a class="btn btn-verde" target="_blank" rel="noopener"
+           href="https://waze.com/ul?q=Parroquia%20Sagrado%20Coraz%C3%B3n%20de%20Jes%C3%BAs%20Bucaramanga&navigate=yes"><svg class="ico"><use href="#i-nav"/></svg> Waze</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="etiqueta">RECEPCIÓN · AL FINALIZAR</div>
+      <div class="lugar">Hacienda Casa Antonio</div>
+      <div class="hora">Celebremos juntos este día</div>
+      <div class="botones">
+        <!-- TODO Robert: idem, confirma ciudad/dirección exacta -->
+        <a class="btn btn-oro" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Hacienda+Casa+Antonio+Bucaramanga"><svg class="ico"><use href="#i-pin"/></svg> Google Maps</a>
+        <a class="btn btn-verde" target="_blank" rel="noopener"
+           href="https://waze.com/ul?q=Hacienda%20Casa%20Antonio%20Bucaramanga&navigate=yes"><svg class="ico"><use href="#i-nav"/></svg> Waze</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. CONFIRMACIÓN ============ -->
+  <section class="fade">
+    <h2>Confirma tu asistencia</h2>
+    <div class="divisor"><i></i></div>
+    <p class="nota">Tu compañía hará de este día un recuerdo inolvidable.</p>
+    <div class="centro mt">
+      <a class="btn btn-oro" target="_blank" rel="noopener"
+         href="https://wa.me/573143143863?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20Primera%20Comuni%C3%B3n%20de%20Mar%C3%ADa%20Alejandra%20%F0%9F%95%8A%EF%B8%8F%20Asistiremos%3A%20">
+        <svg class="ico"><use href="#i-chat"/></svg> Confirmar por WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- ============ 5. DETALLE ============ -->
+  <section class="fade">
+    <h2>Un detalle</h2>
+    <div class="divisor"><i></i></div>
+    <p class="nota">Si deseas darme un detalle,<br>agradezco lluvia de sobres&nbsp;<svg class="ico ico-texto"><use href="#i-mail"/></svg></p>
+  </section>
+
+  <footer class="fade">
+    Con amor,
+    <div class="firma">María Alejandra</div>
+  </footer>
+</main>
+
+<script src="./src/app.js"></script>
+</body>
+</html>
