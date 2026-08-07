@@ -39,8 +39,24 @@ main { position: relative; z-index: 1; }
 /* El SVG va con preserveAspectRatio="meet": se escala completo dentro de esta
    caja, sin recortar nunca. Las franjas que sobran son del mismo marfil del
    fondo, asi que no se notan. */
-.hero { width: 100%; height: 100svh; height: 100dvh; overflow: hidden; }
-.hero svg { display: block; width: 100%; height: 100%; }
+/* --py / --pop los escribe app.js al hacer scroll: la invitacion se queda atras
+   (parallax) y se desvanece. Con JS caido los defaults dejan todo quieto. */
+.hero {
+  width: 100%; height: 100svh; height: 100dvh; overflow: hidden;
+  transform: translate3d(0, var(--py, 0px), 0);
+  opacity: var(--pop, 1);
+  will-change: transform, opacity;
+}
+.hero svg { display: block; width: 100%; height: 100%; animation: hero-entra 1.5s cubic-bezier(.22,.61,.36,1) both; }
+@keyframes hero-entra { from { transform: scale(1.035); } to { transform: none; } }
+
+/* ---- revelado escalonado de la invitacion (marcado con class="rv" en hero.svg) ----
+   Es CSS puro y arranca solo: si el JS fallara, la invitacion igual aparece. */
+.rv { animation: rv .9s cubic-bezier(.22,.61,.36,1) var(--d, 0s) both; }
+@keyframes rv {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
 
 .scroll-hint {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -49,13 +65,28 @@ main { position: relative; z-index: 1; }
   font-size: clamp(13px, 3.6vw, 15px); letter-spacing: 3px; text-transform: uppercase;
   background: linear-gradient(to top, var(--marfil) 42%, rgba(251,247,241,0));
   pointer-events: none;
+  /* "backwards" (y no "both"): al terminar la entrada devuelve el control a
+     --pop, para que el hint se apague junto con la invitacion al bajar. */
+  opacity: var(--pop, 1);
+  animation: aparece .9s ease 1.75s backwards;
 }
+@keyframes aparece { from { opacity: 0; } to { opacity: 1; } }
 .scroll-hint span { display: inline-block; animation: bob 2.2s ease-in-out infinite; }
 @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
 section { max-width: 560px; margin: 0 auto; padding: 44px clamp(16px, 5.5vw, 22px); }
-.fade { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
-.fade.in { opacity: 1; transform: none; }
+
+/* Entrada escalonada: no entra el bloque entero, entran sus hijos uno tras otro.
+   Es el detalle que mas se nota sin que se sepa por que. */
+.fade > * {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.fade.in > * { opacity: 1; transform: none; }
+.fade.in > *:nth-child(2) { transition-delay: .09s; }
+.fade.in > *:nth-child(3) { transition-delay: .18s; }
+.fade.in > *:nth-child(4) { transition-delay: .27s; }
+.fade.in > *:nth-child(5) { transition-delay: .36s; }
 
 h2 {
   font-weight: 600; font-size: clamp(21px, 5.4vw, 25px); letter-spacing: 6px; text-transform: uppercase;
@@ -114,5 +145,37 @@ h2 {
 .centro { text-align: center; }
 .mt { margin-top: 22px; }
 
-footer { text-align: center; padding: 30px 20px 46px; font-style: italic; color: var(--tinta-suave); font-size: clamp(16px, 4.3vw, 18px); }
-footer .firma { font-family: 'Great Vibes', cursive; font-size: clamp(34px, 9vw, 42px); color: var(--tinta); margin-top: 6px; }
+footer { text-align: center; padding: 34px 20px 64px; font-style: italic; color: var(--tinta-suave); font-size: clamp(16px, 4.3vw, 18px); }
+
+/* ====== la firma: el cierre de la pagina ======
+   Se traza de izquierda a derecha, como si la escribiera una pluma.
+   Va con clip-path y no con una mascara degradada (el borde difuso quedaria
+   mas bonito) porque mask-position NO interpola en animaciones CSS: Chrome
+   deja la mascara en el fotograma inicial y la firma no aparece nunca.
+   El -8% final da holgura al rasgo de la "a" para que no se recorte. */
+footer .firma {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(46px, 13vw, 72px);
+  line-height: 1.24; color: var(--tinta); margin-top: 10px;
+}
+/* su entrada es el trazo, no el desplazamiento del stagger */
+.fade > .firma { opacity: 1; transform: none; transition: none; }
+/* "backwards" y no "both": el estado recortado solo existe durante la
+   animacion, asi que si el JS nunca añadiera .in la firma se ve igual. */
+.fade.in > .firma { animation: firma 1.7s cubic-bezier(.5,.02,.28,1) .35s backwards; }
+@keyframes firma {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 -8% 0 0); }
+}
+
+/* ====== accesibilidad: quien pide menos movimiento lo recibe todo estatico ====== */
+@media (prefers-reduced-motion: reduce) {
+  .rv, .hero svg, .fade > *, .fade.in > *, .scroll-hint, .scroll-hint span, .fade.in > .firma {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero { transform: none !important; opacity: 1 !important; }
+  footer .firma { clip-path: none !important; }
+}
