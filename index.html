@@ -68,7 +68,11 @@
   <defs>
   <style>
     .label  { font-family:'Cormorant Garamond',serif; font-size:31px; font-weight:600; letter-spacing:11px; fill:#75633D; }
-    .name   { font-family:'Great Vibes',cursive; font-size:112px; fill:#6E5D41; }
+    /* palo rosa profundo: el mismo acento de las flores, bajado hasta 4.6:1
+       sobre el marfil. Great Vibes tiene el trazo muy fino y con el rosa de
+       las flores (2.9:1) o con el oro de los botones (2.1:1) el nombre se
+       leeria lavado. */
+    .name   { font-family:'Great Vibes',cursive; font-size:112px; fill:#96635C; }
     .phrase { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:28px; font-weight:500; fill:#5C6E52; }
     .detail { font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:500; letter-spacing:2px; fill:#6E5D41; font-weight:500; }
     .rsvp   { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; letter-spacing:6px; fill:#75633D; }
@@ -349,6 +353,15 @@
   <ellipse cx="90" cy="1990" rx="260" ry="220" fill="url(#washEuca)" filter="url(#blur28)" opacity="0.85"/>
   <ellipse cx="1010" cy="1970" rx="270" ry="220" fill="url(#washCream)" filter="url(#blur28)" opacity="0.85"/>
 
+  <!-- ============= FILETE: doble regla dorada =============
+       Va ANTES que los florales a proposito: asi las esquinas se apoyan
+       encima y el marco no corta ningun petalo. Entra el primero de todos
+       en el revelado, como si primero se imprimiera el papel. -->
+  <g class="rv" style="--d:.02s" fill="none" stroke="#C9A961">
+    <rect x="24" y="24" width="1032" height="2152" stroke-width="3.2" opacity="0.5"/>
+    <rect x="35" y="35" width="1010" height="2130" stroke-width="1.6" opacity="0.3"/>
+  </g>
+
   
   
   
@@ -520,9 +533,14 @@
   <!-- ============= CENTER-BOTTOM: kneeling girl ============= -->
   <g class="rv" style="--d:.98s">
   <g transform="translate(540 400) scale(0.97)">
+    <!-- la niña flotaba sobre el papel: el halo era muy tenue y la sombra de
+         apoyo, aunque existia, no llegaba a leerse. Se refuerzan las dos y se
+         añade un nucleo de sombra bajo el ruedo, que es lo que hace que la
+         ilustracion parezca colocada sobre el papel y no pegada encima. -->
     <ellipse cx="0" cy="840" rx="265" ry="290" fill="url(#washSage)" filter="url(#blur28)"/>
-    <ellipse cx="0" cy="880" rx="195" ry="220" fill="url(#washCream)" filter="url(#blur28)" opacity="0.9"/>
-    <ellipse cx="0" cy="1035" rx="205" ry="36" fill="#E5D9C0" opacity="0.8" filter="url(#blur14)"/>
+    <ellipse cx="0" cy="880" rx="205" ry="230" fill="url(#washCream)" filter="url(#blur28)"/>
+    <ellipse cx="0" cy="1035" rx="205" ry="36" fill="#DDCFB0" opacity="0.9" filter="url(#blur14)"/>
+    <ellipse cx="0" cy="1033" rx="124" ry="21" fill="#D2C09B" opacity="0.5" filter="url(#blur14)"/>
     <ellipse cx="0" cy="1032" rx="150" ry="26" fill="#C9D6C3" opacity="0.25" filter="url(#blur14)"/>
 
     <g filter="url(#wcSoft)">
@@ -615,25 +633,28 @@
       </g>
       <path d="M -47 712 C -52 740 -42 764 -18 772 C -33 758 -41 736 -41 714 Z" fill="#6A4C38" opacity="0.8"/>
       <path d="M 47 712 C 52 740 42 764 18 772 C 33 758 41 736 41 714 Z" fill="#6A4C38" opacity="0.8"/>
-      <!-- fajin -->
+      <!-- fajin, mono y caidas en palo rosa. Es lo unico con color en toda la
+           niña: iba en el mismo crema que el vestido, el tul y el encaje, y por
+           eso el elemento mas grande de la tarjeta se leia como una mancha
+           palida. El rosa le da cintura y la ata a las flores y a su nombre. -->
       <path d="M -57 792 C -20 804 20 804 57 792 L 58 812 C 20 824 -20 824 -58 812 Z"
-            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.6"/>
-      <path d="M -57 800 C -20 811 20 811 57 800" stroke="#E6D9BE" stroke-width="1.6" fill="none" opacity="0.8"/>
+            fill="#E7CCC5" stroke="#C99E96" stroke-width="1.6"/>
+      <path d="M -57 800 C -20 811 20 811 57 800" stroke="#D3ABA3" stroke-width="1.6" fill="none" opacity="0.8"/>
       <!-- mono -->
       <path d="M -3 808 C -24 794 -48 797 -52 813 C -54 828 -32 835 -13 826 C -7 822 -4 815 -3 808 Z"
-            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.6"/>
+            fill="#E7CCC5" stroke="#C99E96" stroke-width="1.6"/>
       <path d="M 3 808 C 24 794 48 797 52 813 C 54 828 32 835 13 826 C 7 822 4 815 3 808 Z"
-            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.6"/>
-      <path d="M -38 810 C -32 817 -22 821 -13 819" stroke="#E6D9BE" stroke-width="1.8" fill="none" opacity="0.9"/>
-      <path d="M 38 810 C 32 817 22 821 13 819" stroke="#E6D9BE" stroke-width="1.8" fill="none" opacity="0.9"/>
-      <rect x="-8" y="804" width="16" height="15" rx="6" fill="#E8DAC0" stroke="#DCCDAF" stroke-width="1.2"/>
+            fill="#E7CCC5" stroke="#C99E96" stroke-width="1.6"/>
+      <path d="M -38 810 C -32 817 -22 821 -13 819" stroke="#D3ABA3" stroke-width="1.8" fill="none" opacity="0.9"/>
+      <path d="M 38 810 C 32 817 22 821 13 819" stroke="#D3ABA3" stroke-width="1.8" fill="none" opacity="0.9"/>
+      <rect x="-8" y="804" width="16" height="15" rx="6" fill="#DDB9B1" stroke="#C99E96" stroke-width="1.2"/>
       <!-- caidas del mono -->
       <path d="M -6 818 C -14 850 -18 880 -13 910 L -26 907 C -29 874 -23 842 -15 815 Z"
-            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.4"/>
+            fill="#E7CCC5" stroke="#C99E96" stroke-width="1.4"/>
       <path d="M 6 818 C 14 850 18 880 13 910 L 26 907 C 29 874 23 842 15 815 Z"
-            fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.4"/>
-      <path d="M -26 907 L -13 910 L -22 921 Z" fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.1"/>
-      <path d="M 26 907 L 13 910 L 22 921 Z" fill="#F1E7D3" stroke="#E0D2B5" stroke-width="1.1"/>
+            fill="#E7CCC5" stroke="#C99E96" stroke-width="1.4"/>
+      <path d="M -26 907 L -13 910 L -22 921 Z" fill="#DDB9B1" stroke="#C99E96" stroke-width="1.1"/>
+      <path d="M 26 907 L 13 910 L 22 921 Z" fill="#DDB9B1" stroke="#C99E96" stroke-width="1.1"/>
     </g>
 
     <!-- crown of cream flowers, sage and eucalyptus -->
@@ -667,7 +688,9 @@
     <g class="rv" style="--d:.80s">
     <!-- polvo dorado alrededor del nombre (sigue al nombre, que bajo 21) -->
     <g transform="translate(0 61)">
-    <g fill="url(#goldDot)">
+    <!-- chispas: las motas laten muy despacio y desfasadas entre si, para
+         que la tarjeta no se quede del todo quieta al terminar la entrada -->
+    <g class="chispas" fill="url(#goldDot)">
       <circle cx="216" cy="482" r="3" opacity="1"/><circle cx="252" cy="452" r="2" opacity="0.85"/>
       <circle cx="188" cy="530" r="2.2" opacity="0.9"/><circle cx="290" cy="576" r="1.8" opacity="0.8"/>
       <circle cx="238" cy="598" r="2.6" opacity="0.95"/><circle cx="330" cy="446" r="1.6" opacity="0.75"/>
@@ -677,7 +700,7 @@
       <circle cx="404" cy="560" r="1.6" opacity="0.7"/><circle cx="676" cy="558" r="1.6" opacity="0.7"/>
       <circle cx="540" cy="446" r="1.8" opacity="0.75"/><circle cx="600" cy="606" r="1.8" opacity="0.75"/>
     </g>
-    <g fill="url(#goldDot)" opacity="0.95">
+    <g class="chispas" fill="url(#goldDot)" opacity="0.95">
       <path transform="translate(206 468)" d="M 0 -7 Q 1.4 -1.4 7 0 Q 1.4 1.4 0 7 Q -1.4 1.4 -7 0 Q -1.4 -1.4 0 -7 Z"/>
       <path transform="translate(876 464) scale(0.85)" d="M 0 -7 Q 1.4 -1.4 7 0 Q 1.4 1.4 0 7 Q -1.4 1.4 -7 0 Q -1.4 -1.4 0 -7 Z"/>
       <path transform="translate(560 616) scale(0.6)" d="M 0 -7 Q 1.4 -1.4 7 0 Q 1.4 1.4 0 7 Q -1.4 1.4 -7 0 Q -1.4 -1.4 0 -7 Z"/>
