@@ -119,6 +119,13 @@
       <stop offset="55%" stop-color="#F1E7D3"/>
       <stop offset="100%" stop-color="#E9DCC4"/>
     </radialGradient>
+    <!-- palo rosa: el unico acento frio-calido de la paleta. Va agrisado a
+         proposito; un rosa saturado se comeria el registro acuarela. -->
+    <radialGradient id="paloG" cx="42%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#F6E4DF"/>
+      <stop offset="55%" stop-color="#E7CCC5"/>
+      <stop offset="100%" stop-color="#D6ADA5"/>
+    </radialGradient>
     <!-- beige rose -->
     <radialGradient id="beigeG" cx="45%" cy="40%" r="70%">
       <stop offset="0%" stop-color="#F1E7D3"/>
@@ -179,6 +186,39 @@
         <ellipse cx="-24" cy="-24" rx="16" ry="9" transform="rotate(-30 -24 -24)"/>
         <ellipse cx="26" cy="16" rx="13" ry="7" transform="rotate(25 26 16)"/>
       </g>
+    </g>
+
+    <!-- las tres variantes en palo rosa: misma geometria que sus gemelas crema,
+         solo cambia el color. Se usan en una minoria de las flores para que el
+         rosa sea un acento y no un segundo tema que compita con el verde. -->
+    <g id="rosePalo">
+      <g filter="url(#wc)">
+        <circle r="44" fill="url(#paloG)" opacity="0.97"/>
+        <path d="M -34 6 A 34 34 0 1 1 30 -18 A 26 26 0 1 0 -22 -20 A 22 22 0 1 1 -34 6 Z"
+              fill="#DEB9B1" opacity="0.6"/>
+        <path d="M -20 4 A 20 20 0 1 1 18 -10 A 15 15 0 1 0 -12 -12 A 13 13 0 1 1 -20 4 Z"
+              fill="#CFA49B" opacity="0.6"/>
+        <circle r="9" fill="#C69A92" opacity="0.85"/>
+        <circle r="4" cx="1" cy="-1" fill="#B78980"/>
+      </g>
+      <g fill="#FBF7F1" opacity="0.45" filter="url(#wcSoft)">
+        <ellipse cx="-24" cy="-24" rx="16" ry="9" transform="rotate(-30 -24 -24)"/>
+        <ellipse cx="26" cy="16" rx="13" ry="7" transform="rotate(25 26 16)"/>
+      </g>
+    </g>
+    <g id="budPalo">
+      <g filter="url(#wc)">
+        <ellipse cx="0" cy="0" rx="9" ry="13" fill="url(#paloG)"/>
+        <path d="M -8 6 Q 0 16 8 6 Q 4 12 0 13 Q -4 12 -8 6 Z" fill="#D3DECC"/>
+        <path d="M 0 -12 Q 5 -4 2 4 Q 0 -2 -3 -6 Z" fill="#CFA49B" opacity="0.6"/>
+      </g>
+    </g>
+    <g id="tinyFlowerPalo">
+      <g fill="#EDD3CC">
+        <circle cx="0" cy="-5" r="4"/><circle cx="5" cy="-1.5" r="4"/>
+        <circle cx="3" cy="4.5" r="4"/><circle cx="-3" cy="4.5" r="4"/><circle cx="-5" cy="-1.5" r="4"/>
+      </g>
+      <circle r="2.2" fill="#B78980"/>
     </g>
 
     <!-- deep beige rose -->
@@ -323,7 +363,7 @@
     <use href="#sprig" transform="translate(96 -6) rotate(163) scale(0.95)"/>
     <use href="#rose" transform="translate(60 72) scale(0.68) rotate(-10)"/>
     <use href="#peony" transform="translate(128 34) scale(0.55) rotate(12)"/>
-    <use href="#bud" transform="translate(118 118) rotate(28) scale(0.95)"/>
+    <use href="#budPalo" transform="translate(118 118) rotate(28) scale(0.95)"/>
     <use href="#wildflower" transform="translate(168 78) scale(0.8)"/>
     <use href="#tinyFlower" transform="translate(48 156) scale(1.1)"/>
     <use href="#speckles" transform="translate(190 130)" opacity="0.7"/>
@@ -332,7 +372,7 @@
     <use href="#sprig" transform="translate(984 -6) rotate(-163) scale(-0.95 0.95)"/>
     <use href="#rose" transform="translate(1020 72) scale(0.68) rotate(10)"/>
     <use href="#peony" transform="translate(952 34) scale(0.55) rotate(-12)"/>
-    <use href="#bud" transform="translate(962 118) rotate(-28) scale(0.95)"/>
+    <use href="#budPalo" transform="translate(962 118) rotate(-28) scale(0.95)"/>
     <use href="#wildflower" transform="translate(912 78) scale(0.8)"/>
     <use href="#tinyFlower" transform="translate(1032 156) scale(1.1)"/>
     <use href="#speckles" transform="translate(890 130)" opacity="0.7"/>
@@ -342,7 +382,7 @@
     <use href="#sprig" transform="translate(96 -6) rotate(163) scale(0.95)"/>
     <use href="#rose" transform="translate(60 72) scale(0.68) rotate(-10)"/>
     <use href="#peony" transform="translate(128 34) scale(0.55) rotate(12)"/>
-    <use href="#bud" transform="translate(118 118) rotate(28) scale(0.95)"/>
+    <use href="#budPalo" transform="translate(118 118) rotate(28) scale(0.95)"/>
     <use href="#wildflower" transform="translate(168 78) scale(0.8)"/>
     <use href="#tinyFlower" transform="translate(48 156) scale(1.1)"/>
     <use href="#speckles" transform="translate(190 130)" opacity="0.7"/>
@@ -351,7 +391,7 @@
     <use href="#sprig" transform="translate(984 -6) rotate(-163) scale(-0.95 0.95)"/>
     <use href="#rose" transform="translate(1020 72) scale(0.68) rotate(10)"/>
     <use href="#peony" transform="translate(952 34) scale(0.55) rotate(-12)"/>
-    <use href="#bud" transform="translate(962 118) rotate(-28) scale(0.95)"/>
+    <use href="#budPalo" transform="translate(962 118) rotate(-28) scale(0.95)"/>
     <use href="#wildflower" transform="translate(912 78) scale(0.8)"/>
     <use href="#tinyFlower" transform="translate(1032 156) scale(1.1)"/>
     <use href="#speckles" transform="translate(890 130)" opacity="0.7"/>
@@ -360,8 +400,8 @@
     <use href="#euca" transform="translate(10 430) rotate(160) scale(0.95)"/>
     <use href="#sprig" transform="translate(22 505) rotate(122) scale(0.8)"/>
     <use href="#wildflower" transform="translate(60 540) scale(0.7)"/>
-    <use href="#rose" transform="translate(36 592) scale(0.52) rotate(-8)"/>
-    <use href="#tinyFlower" transform="translate(68 590) scale(0.7)"/>
+    <use href="#rosePalo" transform="translate(36 592) scale(0.52) rotate(-8)"/>
+    <use href="#tinyFlowerPalo" transform="translate(68 590) scale(0.7)"/>
     <use href="#bud" transform="translate(54 634) rotate(42) scale(0.85)"/>
     <use href="#euca" transform="translate(2 645) rotate(140) scale(0.75)"/>
     <use href="#peony" transform="translate(20 672) scale(0.46) rotate(10)"/>
@@ -374,8 +414,8 @@
     <use href="#euca" transform="translate(1070 430) rotate(-160) scale(-0.95 0.95)"/>
     <use href="#sprig" transform="translate(1058 505) rotate(-122) scale(-0.8 0.8)"/>
     <use href="#wildflower" transform="translate(1020 540) scale(0.7)"/>
-    <use href="#rose" transform="translate(1044 592) scale(0.52) rotate(8)"/>
-    <use href="#tinyFlower" transform="translate(1012 590) scale(0.7)"/>
+    <use href="#rosePalo" transform="translate(1044 592) scale(0.52) rotate(8)"/>
+    <use href="#tinyFlowerPalo" transform="translate(1012 590) scale(0.7)"/>
     <use href="#bud" transform="translate(1026 634) rotate(-42) scale(0.85)"/>
     <use href="#euca" transform="translate(1078 645) rotate(-140) scale(-0.75 0.75)"/>
     <use href="#peony" transform="translate(1060 672) scale(0.46) rotate(-10)"/>
@@ -389,8 +429,8 @@
     <use href="#euca" transform="translate(10 430) rotate(160) scale(0.95)"/>
     <use href="#sprig" transform="translate(22 505) rotate(122) scale(0.8)"/>
     <use href="#wildflower" transform="translate(60 540) scale(0.7)"/>
-    <use href="#rose" transform="translate(36 592) scale(0.52) rotate(-8)"/>
-    <use href="#tinyFlower" transform="translate(68 590) scale(0.7)"/>
+    <use href="#rosePalo" transform="translate(36 592) scale(0.52) rotate(-8)"/>
+    <use href="#tinyFlowerPalo" transform="translate(68 590) scale(0.7)"/>
     <use href="#bud" transform="translate(54 634) rotate(42) scale(0.85)"/>
     <use href="#euca" transform="translate(2 645) rotate(140) scale(0.75)"/>
     <use href="#peony" transform="translate(20 672) scale(0.46) rotate(10)"/>
@@ -403,8 +443,8 @@
     <use href="#euca" transform="translate(1070 430) rotate(-160) scale(-0.95 0.95)"/>
     <use href="#sprig" transform="translate(1058 505) rotate(-122) scale(-0.8 0.8)"/>
     <use href="#wildflower" transform="translate(1020 540) scale(0.7)"/>
-    <use href="#rose" transform="translate(1044 592) scale(0.52) rotate(8)"/>
-    <use href="#tinyFlower" transform="translate(1012 590) scale(0.7)"/>
+    <use href="#rosePalo" transform="translate(1044 592) scale(0.52) rotate(8)"/>
+    <use href="#tinyFlowerPalo" transform="translate(1012 590) scale(0.7)"/>
     <use href="#bud" transform="translate(1026 634) rotate(-42) scale(0.85)"/>
     <use href="#euca" transform="translate(1078 645) rotate(-140) scale(-0.75 0.75)"/>
     <use href="#peony" transform="translate(1060 672) scale(0.46) rotate(-10)"/>
@@ -425,7 +465,7 @@
 
   <!-- ============= TOP-CENTER: foliage cross ============= -->
   <g class="rv" style="--d:.22s">
-  <g transform="translate(540 310) scale(1.55)">
+  <g transform="translate(540 296) scale(1.8)">
     <circle r="120" fill="url(#washCream)" filter="url(#blur28)" opacity="0.7"/>
     <circle cx="0" cy="-18" r="96" fill="none" stroke="#C9B58C" stroke-width="1.3" stroke-dasharray="0.1 8" stroke-linecap="round" opacity="0.75"/>
     <circle cx="0" cy="-18" r="80" fill="none" stroke="#D3C3A5" stroke-width="1.1" stroke-dasharray="0.1 6" stroke-linecap="round" opacity="0.6"/>
@@ -437,9 +477,12 @@
     </g>
     
     
+    <!-- el eje de la cruz: 2.4 en salvia claro daba 1.3px en pantalla y la cruz
+         no se leia como cruz, solo como un racimo de flores. Con 5 y un verde
+         mas profundo que las hojas, las flores pasan a decorarla. -->
     <g filter="url(#wc)">
-      <path d="M 0 -78 L 0 82" stroke="#A4B69F" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-      <path d="M -52 -18 L 52 -18" stroke="#A4B69F" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      <path d="M 0 -78 L 0 82" stroke="#7E9578" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M -52 -18 L 52 -18" stroke="#7E9578" stroke-width="5" stroke-linecap="round" fill="none"/>
     </g>
     <use href="#tinyLeaf" transform="translate(0 -62) scale(0.9)"/>
     <use href="#tinyLeaf" transform="translate(0 -44)"/>
@@ -460,10 +503,10 @@
     <use href="#tinyFlower" transform="translate(54 -18) scale(0.9)"/>
     <use href="#tinyFlower" transform="translate(0 -46) scale(0.6)"/>
     <use href="#tinyFlower" transform="translate(0 42) scale(0.6)"/>
-    <use href="#bud" transform="translate(-32 -34) rotate(-30) scale(0.7)"/>
-    <use href="#bud" transform="translate(32 -34) rotate(30) scale(0.7)"/>
-    <use href="#bud" transform="translate(-14 62) rotate(-155) scale(0.6)"/>
-    <use href="#bud" transform="translate(14 62) rotate(155) scale(0.6)"/>
+    <use href="#budPalo" transform="translate(-32 -34) rotate(-30) scale(0.7)"/>
+    <use href="#budPalo" transform="translate(32 -34) rotate(30) scale(0.7)"/>
+    <use href="#budPalo" transform="translate(-14 62) rotate(-155) scale(0.6)"/>
+    <use href="#budPalo" transform="translate(14 62) rotate(155) scale(0.6)"/>
     <use href="#wildflower" transform="translate(0 -94) scale(0.55)"/>
     <use href="#tinyFlower" transform="translate(-38 -30) scale(0.55)"/>
     <use href="#tinyFlower" transform="translate(38 -30) scale(0.55)"/>
@@ -604,7 +647,7 @@
       <use href="#tinyFlower" transform="translate(-14 -8)"/>
       <use href="#tinyFlower" transform="translate(14 -8)"/>
       <use href="#tinyFlower" transform="translate(38 -1) scale(0.85)"/>
-      <use href="#bud" transform="translate(0 -10) scale(0.62)"/>
+      <use href="#budPalo" transform="translate(0 -10) scale(0.62)"/>
       <use href="#speckles" transform="translate(62 -12) scale(0.7)" opacity="0.7"/>
     </g>
   </g>
