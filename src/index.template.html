@@ -76,9 +76,12 @@
     <h2>Confirma tu asistencia</h2>
     <div class="divisor"><i></i></div>
     <p class="nota">Tu compañía hará de este día un recuerdo inolvidable.</p>
+    <!-- El "2" viene escrito de fabrica para que funcione aunque el JS falle;
+         app.js solo lo reescribe si el enlace trae ?p=N. -->
+    <p class="pases" id="pases">Invitación válida para 2 personas</p>
     <div class="centro mt">
-      <a class="btn btn-oro" target="_blank" rel="noopener"
-         href="https://wa.me/573143143863?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20Primera%20Comuni%C3%B3n%20de%20Mar%C3%ADa%20Alejandra%20%F0%9F%95%8A%EF%B8%8F%20Asistiremos%3A%20">
+      <a class="btn btn-oro" id="btn-wa" target="_blank" rel="noopener"
+         href="https://wa.me/573143143863?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20Primera%20Comuni%C3%B3n%20de%20Mar%C3%ADa%20Alejandra%20%F0%9F%95%8A%EF%B8%8F%20Asistiremos%202%20personas.">
         <svg class="ico"><use href="#i-chat"/></svg> Sí, ahí estaré</a>
     </div>
   </section>

@@ -21,6 +21,18 @@ const cal = new URLSearchParams({
 });
 document.getElementById('btn-cal').href = 'https://calendar.google.com/calendar/render?' + cal;
 
+// ---------- pases: cuantos lugares reserva esta invitacion ----------
+// Por defecto 2, que es lo que ya viene escrito en el HTML. Con ?p=N en el
+// enlace se manda un numero distinto a cada familia sin tocar el codigo:
+//   .../?p=4  ->  "Invitación válida para 4 personas"
+// El texto de WhatsApp se rehace con el mismo numero para que el invitado no
+// tenga que escribirlo (puede editarlo antes de enviar si van menos).
+const pases = Math.min(12, Math.max(1, parseInt(new URLSearchParams(location.search).get('p'), 10) || 2));
+const lugares = pases === 1 ? '1 persona' : pases + ' personas';
+document.getElementById('pases').textContent = 'Invitación válida para ' + lugares;
+document.getElementById('btn-wa').href = 'https://wa.me/573143143863?text=' + encodeURIComponent(
+  '¡Hola! Confirmo mi asistencia a la Primera Comunión de María Alejandra 🕊️ Asistiremos ' + lugares + '.');
+
 // ---------- animaciones de entrada ----------
 const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.15 });
 document.querySelectorAll('.fade').forEach(el => io.observe(el));
